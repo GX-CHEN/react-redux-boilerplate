@@ -9,14 +9,16 @@ class ViewImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageUrl: null
+      imageUrl: null,
+      imageTitle: null
     };
   }
 
   componentDidMount() {
     const { location } = this.props;
     if (location.state) {
-      this.setState({ imageUrl: location.state.imageUrl });
+      const { imageUrl, imageTitle } = location.state;
+      this.setState({ imageUrl, imageTitle });
     }
   }
 
@@ -26,13 +28,12 @@ class ViewImage extends React.Component {
   };
 
   render() {
+    const { imageUrl, imageTitle } = this.state;
     return (
       <div>
         <Button onClick={this.navigateToList}>Back To List</Button>
-        <h3>You can see image by click the link here:</h3>
-        <a href={this.state.imageUrl}>
-          {this.state.imageUrl}
-        </a>
+        <h3>{imageTitle}</h3>
+        <img src={imageUrl} alt={imageTitle} />
       </div>
     );
   }

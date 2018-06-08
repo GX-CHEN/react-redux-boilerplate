@@ -32,9 +32,9 @@ class ListImage extends React.Component {
     }
   }
 
-  navigateToImageView = imageUrl => {
+  navigateToImageView = (imageUrl, imageTitle) => {
     const { changePage } = this.props;
-    changePage('viewImage', { imageUrl });
+    changePage('viewImage', { imageUrl, imageTitle });
   };
 
   render() {
@@ -46,7 +46,7 @@ class ListImage extends React.Component {
           bordered
           dataSource={this.state.imageList}
           renderItem={item => (
-            <List.Item onClick={this.navigateToImageView.bind(this, item.url)}>{item.title}</List.Item>
+            <List.Item onClick={this.navigateToImageView.bind(this, item.embed_url, item.title)}>{item.title}</List.Item>
           )}
         />
       </div>
