@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
     case SEARCH_IMAGES_BY_PAGE_FULFILLED: {
       return {
         ...state,
-        imageList: payload.query.pages[736].images,
+        imageList: payload.data,
         nextPage: 'viewImage'
       };
     }

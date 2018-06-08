@@ -9,14 +9,14 @@ class ViewImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageTitle: null
+      imageUrl: null
     };
   }
 
   componentDidMount() {
     const { location } = this.props;
     if (location.state) {
-      this.setState({ imageTitle: location.state.imageTitle });
+      this.setState({ imageUrl: location.state.imageUrl });
     }
   }
 
@@ -30,8 +30,8 @@ class ViewImage extends React.Component {
       <div>
         <Button onClick={this.navigateToList}>Back To List</Button>
         <h3>You can see image by click the link here:</h3>
-        <a href={`https://en.wikipedia.org/wiki/Albert_Einstein#/media/${escape(this.state.imageTitle)}`}>
-          {this.state.imageTitle}
+        <a href={this.state.imageUrl}>
+          {this.state.imageUrl}
         </a>
       </div>
     );

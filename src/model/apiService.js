@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export function searchImageService() {
   return axios
-    .get(`https://en.wikipedia.org/w/api.php?action=query&titles=Albert Einstein&prop=images&format=json&origin=*`)
+    .get(`http://api.giphy.com/v1/gifs/trending?api_key=f30RsH8N2igFVgyuE3KBH3t0RjzzkWne&limit=10`)
     .then(function(res) {
       if (res.status !== 200) throw new Error('bad response from server' + res.status);
       return res.data;
