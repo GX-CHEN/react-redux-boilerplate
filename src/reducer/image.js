@@ -1,4 +1,4 @@
-import { SEARCH_IMAGES_BY_PAGE_FULFILLED } from '../const/wikiImage';
+import { SEARCH_IMAGES_BY_PAGE_FULFILLED } from '../const/image';
 
 const initialState = {};
 

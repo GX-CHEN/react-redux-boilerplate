@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import wikiImage from './reducer/wikiImage';
+import image from './reducer/image';
 
 export default combineReducers({
   router: routerReducer,
-  wikiImage
+  image
 });

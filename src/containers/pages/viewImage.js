@@ -45,7 +45,7 @@ ViewImage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    imageList: state.wikiImage.imageList
+    imageList: state.image.imageList
   };
 };
 

@@ -1,4 +1,4 @@
-import { SEARCH_IMAGES_BY_PAGE } from '../const/wikiImage';
+import { SEARCH_IMAGES_BY_PAGE } from '../const/image';
 import { searchImageService } from '../model/apiService';
 
 export const searchImage = () => {

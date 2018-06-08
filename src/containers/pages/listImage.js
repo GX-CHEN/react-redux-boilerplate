@@ -2,7 +2,7 @@ import React from 'react';
 import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { searchImage } from '../../action/wikiImage';
+import { searchImage } from '../../action/image';
 import { Button, List, message } from 'antd';
 import PropTypes from 'prop-types';
 
@@ -22,7 +22,7 @@ class ListImage extends React.Component {
     this.success('Land on listing page');
   }
 
-  listWikiImage = () => {
+  listImage = () => {
     this.props.searchImage();
   };
 
@@ -40,7 +40,7 @@ class ListImage extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.listWikiImage}>Get Images From Wiki Einsten Page</Button>
+        <Button onClick={this.listImage}>Get Images From Wiki Einsten Page</Button>
         <List
           header={<div style={{ fontWeight: 'bold' }}>Header</div>}
           bordered
@@ -62,7 +62,7 @@ ListImage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    imageList: state.wikiImage.imageList
+    imageList: state.image.imageList
   };
 };
 
