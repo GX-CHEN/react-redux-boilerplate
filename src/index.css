@@ -7,3 +7,22 @@ body {
   font-size: 1rem;
   line-height: 1.5;
 }
+
+.view-image-container,
+.list-image-container {
+  min-width: 300px;
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+  height: 60%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.full-with-btn {
+  width: 100%;
+}

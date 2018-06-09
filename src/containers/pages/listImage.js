@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { searchImage } from '../../action/image';
-import { Button, List, message } from 'antd';
+import { Button, List, Divider, message } from 'antd';
 import PropTypes from 'prop-types';
 
 class ListImage extends React.Component {
@@ -14,12 +14,8 @@ class ListImage extends React.Component {
     };
   }
 
-  success = content => {
-    message.success(content, 3);
-  };
-
   componentDidMount() {
-    this.success('Land on listing page');
+    message.success('Land on listing page');
   }
 
   listImage = () => {
@@ -39,14 +35,32 @@ class ListImage extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.listImage}>Get Images From Wiki Einsten Page</Button>
+      <div className="list-image-container">
+        <Button onClick={this.listImage} className="full-with-btn" type="primary">
+          Get Images From Trending Giphys
+        </Button>
+        <Divider dashed />
         <List
-          header={<div style={{ fontWeight: 'bold' }}>Header</div>}
+          header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
           bordered
           dataSource={this.state.imageList}
           renderItem={item => (
-            <List.Item onClick={this.navigateToImageView.bind(this, item.embed_url, item.title)}>{item.title}</List.Item>
+            <List.Item
+              onClick={this.navigateToImageView.bind(
+                this,
+                item.images.downsized_medium.url,
+                item.title ||
+                  item.slug
+                    .split('-')
+                    .slice(0, -1)
+                    .join(' ')
+              )}>
+              {item.title ||
+                item.slug
+                  .split('-')
+                  .slice(0, -1)
+                  .join(' ')}
+            </List.Item>
           )}
         />
       </div>
