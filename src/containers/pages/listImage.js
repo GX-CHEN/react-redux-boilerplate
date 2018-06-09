@@ -7,6 +7,11 @@ import { Button, List, Divider, message } from 'antd';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 
+/**
+ * This component corresponding to the listImage view
+ * It has a button to trigger an API call, then generate a list
+ * When clicking on element of the list, user will be navigate to viewPage to see the gif image
+ */
 class ListImage extends React.Component {
   /**@constructor
    * @param {Object} props

@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { Button, Divider, Icon, message } from 'antd';
 import PropTypes from 'prop-types';
 
+/**
+ * This component corresponding to the viewImage view
+ * It displays the selected gif image with title
+ * There's also a 'back to list' button to go back to list view
+ */
 class ViewImage extends React.Component {
     /**@constructor 
    * @param {Object} props
