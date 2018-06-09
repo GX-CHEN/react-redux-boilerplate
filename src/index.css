@@ -23,6 +23,10 @@ body {
   right: 0;
 }
 
+.view-image-container img {
+  max-width: 100%;
+}
+
 .full-with-btn {
   width: 100%;
 }

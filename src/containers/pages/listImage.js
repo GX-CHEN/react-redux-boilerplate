@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { searchImage } from '../../action/image';
 import { Button, List, Divider, message } from 'antd';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 
 class ListImage extends React.Component {
   constructor(props) {
@@ -22,9 +23,13 @@ class ListImage extends React.Component {
     this.props.searchImage();
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.imageList) {
-      this.setState({ imageList: nextProps.imageList });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (isEqual(nextProps.imageList, prevState.imageList)) {
+      return null;
+    } else {
+      return {
+        imageList: nextProps.imageList
+      };
     }
   }
 
