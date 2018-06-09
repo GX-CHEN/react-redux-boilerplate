@@ -9,6 +9,11 @@ export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
+/**
+ * middleware will empower the app to do complex things with less code
+ * For example: async handling, routing, cookie handling etc,
+ * In the store.js, we specify all the middlewares in the store creation process 
+ */
 const middleware = [thunk, routerMiddleware(history), promiseMiddleware()];
 
 if (process.env.NODE_ENV === 'development') {

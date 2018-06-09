@@ -6,6 +6,13 @@ import { Button, Divider, Icon, message } from 'antd';
 import PropTypes from 'prop-types';
 
 class ViewImage extends React.Component {
+    /**@constructor 
+   * @param {Object} props
+   * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
+   * @param {string} props.location.state.imageUrl - image URL of selected gif image from the list image page
+   * @param {string} props.location.state.imageTitle - title of selected gif image from the list image page
+   * @param {Function} props.changePage - changePage is a function which can navigation from a page to another
+   */
   constructor(props) {
     super(props);
     this.state = {

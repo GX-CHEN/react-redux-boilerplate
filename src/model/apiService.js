@@ -8,6 +8,9 @@ import axios from 'axios';
 const BASE_URL = 'http://api.giphy.com/v1/gifs/trending';
 const API_KEY = 'f30RsH8N2igFVgyuE3KBH3t0RjzzkWne';
 
+/**
+ * search trending do not require any passed in argument, it simply get the lastest trending images from giphy
+ */
 export function searchImageService() {
   return axios.get(`${BASE_URL}?api_key=${API_KEY}&limit=10`).then(function(res) {
     if (res.status !== 200) throw new Error('bad response from server' + res.status);
