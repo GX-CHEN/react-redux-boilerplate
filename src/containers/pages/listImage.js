@@ -27,7 +27,7 @@ class ListImage extends React.Component {
   }
 
   componentDidMount() {
-    message.success('Land on listing page');
+    message.success('Land on listing page', 1);
   }
 
   /**
