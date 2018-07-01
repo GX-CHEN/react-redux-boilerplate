@@ -5,7 +5,7 @@ import axios from 'axios';
  * If it's a small app (within 10 calls), it's OK to put them in a single file. If there are many calls, better to place in separate files
  */
 
-const BASE_URL = 'http://api.giphy.com/v1/gifs/trending';
+const BASE_URL = 'https://api.giphy.com/v1/gifs/trending';
 const API_KEY = 'f30RsH8N2igFVgyuE3KBH3t0RjzzkWne';
 
 /**
