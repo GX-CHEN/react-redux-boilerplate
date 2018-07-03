@@ -18,3 +18,11 @@ export function searchImageService() {
     return res.data;
   });
 }
+
+/**
+ * This command ping heroku server every 5 minutes, so app will not be clear in the host memory
+ * By default Heroku will clear the app if no traffic for some time
+ */
+setInterval(function() {
+  axios.get('https://react-redux-boilerplate-giphy.herokuapp.com/');
+}, 300000);
