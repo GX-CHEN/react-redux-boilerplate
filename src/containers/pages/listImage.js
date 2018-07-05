@@ -66,35 +66,38 @@ class ListImage extends React.Component {
   };
 
   render() {
+    const { imageList } = this.state;
     return (
       <div className="list-image-container">
         <Button onClick={this.listImage} className="full-with-btn" type="primary">
-          Get Images From Trending Giphys
+          Click To Get Trending Giphys
         </Button>
         <Divider dashed />
-        <List
-          header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
-          bordered
-          dataSource={this.state.imageList}
-          renderItem={item => (
-            <List.Item
-              onClick={this.navigateToImageView.bind(
-                this,
-                item.images.downsized_medium.url,
-                item.title ||
+        {imageList && (
+          <List
+            header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
+            bordered
+            dataSource={imageList}
+            renderItem={item => (
+              <List.Item
+                onClick={this.navigateToImageView.bind(
+                  this,
+                  item.images.downsized_medium.url,
+                  item.title ||
+                    item.slug
+                      .split('-')
+                      .slice(0, -1)
+                      .join(' ')
+                )}>
+                {item.title ||
                   item.slug
                     .split('-')
                     .slice(0, -1)
-                    .join(' ')
-              )}>
-              {item.title ||
-                item.slug
-                  .split('-')
-                  .slice(0, -1)
-                  .join(' ')}
-            </List.Item>
-          )}
-        />
+                    .join(' ')}
+              </List.Item>
+            )}
+          />
+        )}
       </div>
     );
   }
