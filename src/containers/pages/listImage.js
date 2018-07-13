@@ -2,8 +2,8 @@ import React from 'react';
 import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { searchImage } from '../../action/image';
-import { Button, List, Divider, message } from 'antd';
+import { getTrendingImage } from '../../action/image';
+import { Button, List, Divider, Input, message } from 'antd';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 
@@ -17,7 +17,7 @@ class ListImage extends React.Component {
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
    * @param {Function} props.changePage - changePage is a function which can navigation from a page to another
-   * @param {Function} props.searchImage  - searchImage will return a list of image which is trending on giphy
+   * @param {Function} props.getTrendingImage  - getTrendingImage will return a list of image which is trending on giphy
    */
   constructor(props) {
     super(props);
@@ -31,10 +31,10 @@ class ListImage extends React.Component {
   }
 
   /**
-   * dispatch the searchImage action and return a list of image
+   * dispatch the getTrendingImage action and return a list of image
    */
   listImage = () => {
-    this.props.searchImage();
+    this.props.getTrendingImage();
   };
 
   /**
@@ -66,35 +66,41 @@ class ListImage extends React.Component {
   };
 
   render() {
+    const { imageList } = this.state;
     return (
       <div className="list-image-container">
+        <Divider>Search By Keyword</Divider>
+        <Input placeholder="Giphy Keyword" />
+        <Divider>OR Get Trending</Divider>
         <Button onClick={this.listImage} className="full-with-btn" type="primary">
-          Get Images From Trending Giphys
+          Click To Get Trending Giphys
         </Button>
         <Divider dashed />
-        <List
-          header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
-          bordered
-          dataSource={this.state.imageList}
-          renderItem={item => (
-            <List.Item
-              onClick={this.navigateToImageView.bind(
-                this,
-                item.images.downsized_medium.url,
-                item.title ||
+        {imageList && (
+          <List
+            header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
+            bordered
+            dataSource={imageList}
+            renderItem={item => (
+              <List.Item
+                onClick={this.navigateToImageView.bind(
+                  this,
+                  item.images.downsized_medium.url,
+                  item.title ||
+                    item.slug
+                      .split('-')
+                      .slice(0, -1)
+                      .join(' ')
+                )}>
+                {item.title ||
                   item.slug
                     .split('-')
                     .slice(0, -1)
-                    .join(' ')
-              )}>
-              {item.title ||
-                item.slug
-                  .split('-')
-                  .slice(0, -1)
-                  .join(' ')}
-            </List.Item>
-          )}
-        />
+                    .join(' ')}
+              </List.Item>
+            )}
+          />
+        )}
       </div>
     );
   }
@@ -103,7 +109,7 @@ class ListImage extends React.Component {
 ListImage.propTypes = {
   location: PropTypes.object,
   changePage: PropTypes.func,
-  searchImage: PropTypes.func
+  getTrendingImage: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -115,7 +121,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      searchImage,
+      getTrendingImage,
       changePage: (route, params) => push(route, params)
     },
     dispatch
