@@ -14,7 +14,7 @@ body {
   max-width: 500px;
   margin: auto;
   width: 50%;
-  height: 60%;
+  height: 86%;
   margin: auto;
   position: absolute;
   top: 0;
@@ -25,6 +25,10 @@ body {
 
 .view-image-container img {
   max-width: 100%;
+}
+
+.image-list {
+  margin-bottom: 100px;
 }
 
 .full-with-btn {

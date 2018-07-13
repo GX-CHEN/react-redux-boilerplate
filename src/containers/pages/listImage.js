@@ -2,7 +2,7 @@ import React from 'react';
 import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getTrendingImage } from '../../action/image';
+import { getTrendingImage, searchImage } from '../../action/image';
 import { Button, List, Divider, Input, message } from 'antd';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
@@ -33,12 +33,17 @@ class ListImage extends React.Component {
   /**
    * dispatch the getTrendingImage action and return a list of image
    */
-  listImage = () => {
+  listTrendingImage = () => {
     this.props.getTrendingImage();
   };
 
+  searchImage = event => {
+    console.log('onInput', event.target.value);
+    this.props.searchImage(event.target.value);
+  };
+
   /**
-   * getDerivedStateFromProps will be called everytime before render (it is new React lifecyle function to replace the old componentWillRecieveProps)
+   * getDerivedStateFromProps will be called every time before render (it is new React lifecyle function to replace the old componentWillReceiveProps)
    * So in order to avoid too frequent render, we need to compare the data then decide do we need to re-render
    * @param {Object} nextProps
    * @param {Object} prevState
@@ -70,15 +75,16 @@ class ListImage extends React.Component {
     return (
       <div className="list-image-container">
         <Divider>Search By Keyword</Divider>
-        <Input placeholder="Giphy Keyword" />
+        <Input onInput={this.searchImage} placeholder="Giphy Keyword" />
         <Divider>OR Get Trending</Divider>
-        <Button onClick={this.listImage} className="full-with-btn" type="primary">
+        <Button onClick={this.listTrendingImage} className="full-with-btn" type="primary">
           Click To Get Trending Giphys
         </Button>
         <Divider dashed />
         {imageList && (
           <List
             header={<div style={{ fontWeight: 'bold' }}>List Of Trending Giphy URL</div>}
+            className="image-list"
             bordered
             dataSource={imageList}
             renderItem={item => (
@@ -109,7 +115,8 @@ class ListImage extends React.Component {
 ListImage.propTypes = {
   location: PropTypes.object,
   changePage: PropTypes.func,
-  getTrendingImage: PropTypes.func
+  getTrendingImage: PropTypes.func,
+  searchImage: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -122,6 +129,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getTrendingImage,
+      searchImage,
       changePage: (route, params) => push(route, params)
     },
     dispatch
