@@ -37,8 +37,10 @@ class ListImage extends React.Component {
     this.props.getTrendingImage();
   };
 
+  /**
+   * dispatch the searchImage action, which will search the images by keyword
+   */
   searchImage = event => {
-    console.log('onInput', event.target.value);
     this.props.searchImage(event.target.value);
   };
 
