@@ -34,3 +34,11 @@ body {
 .full-with-btn {
   width: 100%;
 }
+
+.ant-list-item-content {
+  color: #1890ff;
+}
+
+.ant-list-item-content:hover {
+  text-decoration: underline;
+}
