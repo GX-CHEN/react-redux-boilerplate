@@ -76,12 +76,12 @@ class ListImage extends React.Component {
     const { imageList } = this.state;
     return (
       <div className="list-image-container">
-        <Divider>Search By Keyword</Divider>
-        <Input onInput={this.searchImage} placeholder="Giphy Keyword" />
-        <Divider>OR Get Trending</Divider>
+        <Divider>Get Trending Giphys</Divider>
         <Button onClick={this.listTrendingImage} className="full-with-btn" type="primary">
           Click To Get Trending Giphys
         </Button>
+        <Divider>OR Search By Keyword</Divider>
+        <Input onInput={this.searchImage} placeholder="Giphy Keyword" />
         <Divider dashed />
         {imageList && (
           <List
