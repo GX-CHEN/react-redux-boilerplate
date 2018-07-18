@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * It displays the selected gif image with title
  * There's also a 'back to list' button to go back to list view
  */
-class ViewImage extends React.Component {
+export class ViewImage extends React.Component {
   /**@constructor
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
@@ -29,7 +29,7 @@ class ViewImage extends React.Component {
   componentDidMount() {
     message.info('Land on listing page', 1);
     const { location } = this.props;
-    if (location.state) {
+    if (location && location.state) {
       const { imageUrl, imageTitle } = location.state;
       this.setState({ imageUrl, imageTitle });
     }

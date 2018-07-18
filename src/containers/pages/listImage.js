@@ -12,7 +12,7 @@ import { isEqual } from 'lodash';
  * It has a button to trigger an API call, then generate a list
  * When clicking on element of the list, user will be navigate to viewPage to see the gif image
  */
-class ListImage extends React.Component {
+export class ListImage extends React.Component {
   /**@constructor
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page

@@ -50,6 +50,9 @@
   "jest": {
     "roots": [
       "<rootDir>/tests/"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/jest-setup.js"
     ]
   },
   "lint-staged": {
