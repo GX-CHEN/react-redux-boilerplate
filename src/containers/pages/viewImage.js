@@ -62,13 +62,13 @@ ViewImage.propTypes = {
   changePage: PropTypes.func
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     imageList: state.image.imageList
   };
 };
 
-const mapDispatchToProps = dispatch =>
+export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       changePage: (route, params) => push(route, params)
