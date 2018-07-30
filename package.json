@@ -49,6 +49,7 @@
     "precommit": "lint-staged"
   },
   "jest": {
+    "testEnvironment": "node",
     "roots": [
       "<rootDir>/tests/"
     ],
