@@ -1,8 +1,8 @@
+[![Build Status](https://travis-ci.com/GX-CHEN/react-redux-boilerplate.svg?branch=master)](https://travis-ci.com/GX-CHEN/react-redux-boilerplate)
+
 ## react-redux-boilerplate
 
 A fully set-up boilerplate project which contains React (from Facebook create-react-app), Redux, Router, Antd (UI lib), and devDependencies for linter, formatter and watcher.
-
-[![Build Status](https://travis-ci.com/GX-CHEN/react-redux-boilerplate.svg?branch=master)](https://travis-ci.com/GX-CHEN/react-redux-boilerplate)
 
 ### Demo Website
 
