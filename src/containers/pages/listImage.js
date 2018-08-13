@@ -6,6 +6,7 @@ import { getTrendingImage, searchImage } from '../../action/image';
 import { Button, List, Divider, Input, message } from 'antd';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
+import { generateTitleFromGiphySlug } from '../../model/utils';
 
 /**
  * This component corresponding to the listImage view
@@ -94,17 +95,9 @@ export class ListImage extends React.Component {
                 onClick={this.navigateToImageView.bind(
                   this,
                   item.images.downsized_medium.url,
-                  item.title ||
-                    item.slug
-                      .split('-')
-                      .slice(0, -1)
-                      .join(' ')
+                  item.title || generateTitleFromGiphySlug(item.slug)
                 )}>
-                {item.title ||
-                  item.slug
-                    .split('-')
-                    .slice(0, -1)
-                    .join(' ')}
+                {item.title || generateTitleFromGiphySlug(item.slug)}
               </List.Item>
             )}
           />
