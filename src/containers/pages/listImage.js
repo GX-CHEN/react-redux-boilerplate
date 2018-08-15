@@ -1,6 +1,5 @@
 import React from 'react';
 import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getTrendingImage, searchImage } from '../../action/image';
 import { Button, List, Divider, Input, message } from 'antd';
@@ -81,7 +80,7 @@ export class ListImage extends React.Component {
         <Button onClick={this.listTrendingImage} className="full-with-btn" type="primary">
           Click To Get Trending Giphys
         </Button>
-        <Divider>OR Search By Keyword</Divider>
+        <Divider>or Search By Keyword</Divider>
         <Input onInput={this.searchImage} placeholder="Giphy Keyword" />
         <Divider dashed />
         {imageList && (
@@ -120,15 +119,11 @@ export const mapStateToProps = state => {
   };
 };
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getTrendingImage,
-      searchImage,
-      changePage: (route, params) => push(route, params)
-    },
-    dispatch
-  );
+export const mapDispatchToProps = dispatch => ({
+  getTrendingImage: () => dispatch(getTrendingImage()),
+  searchImage: keyword => dispatch(searchImage(keyword)),
+  changePage: (route, params) => dispatch(push(route, params))
+});
 
 export default connect(
   mapStateToProps,

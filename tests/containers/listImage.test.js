@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Divider, Input, List } from 'antd';
-import { ListImage, mapStateToProps } from '../../src/containers/pages/listImage';
+import { ListImage, mapStateToProps, mapDispatchToProps } from '../../src/containers/pages/listImage';
 
 describe('Test UI elements in listImage component', () => {
   it('ListImage component should contain UI elements from Ant Design, but no List element when no imageList data', () => {
@@ -47,5 +47,19 @@ describe('Test function inside listImage component', () => {
   });
   it('mapStateToProps should return correct prop value based on state', () => {
     expect(mapStateToProps({ image: { imageList: [1, 2] } })).toEqual({ imageList: [1, 2] });
+  });
+  it('mapDispatchToProps should correctly map the function dispatcher', () => {
+    const dispatch = jest.fn();
+    const result = mapDispatchToProps(dispatch);
+    expect(result.getTrendingImage).toBeDefined();
+    expect(result.searchImage).toBeDefined();
+    expect(result.changePage).toBeDefined();
+
+    result.getTrendingImage();
+    result.searchImage();
+    result.changePage();
+    expect(dispatch.mock.calls[0][0]).toBeDefined();
+    expect(dispatch.mock.calls[1][0]).toBeDefined();
+    expect(dispatch.mock.calls[2][0]).toBeDefined();
   });
 });

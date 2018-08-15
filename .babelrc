@@ -1,14 +1,13 @@
 {
   "presets": [
     [
-      "latest",
-      {
-        "targets": {
-          "browsers": ["last 2 versions", "IE >= 10"]
-        }
-      }
+      "env"
     ],
     "react"
   ],
-  "plugins": ["transform-class-properties", "transform-es2015-destructuring", "transform-object-rest-spread"]
+  "plugins": [
+    "transform-class-properties",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread"
+  ]
 }

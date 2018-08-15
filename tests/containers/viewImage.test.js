@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button, Divider, Icon } from 'antd';
-import { ViewImage, mapStateToProps } from '../../src/containers/pages/viewImage';
+import { ViewImage, mapStateToProps, mapDispatchToProps } from '../../src/containers/pages/viewImage';
 
 describe('Test for high level App component', () => {
   it('ViewImage component should contain UI elements from Ant Design', () => {
@@ -31,5 +31,13 @@ describe('Test function inside viewImage component', () => {
   });
   it('mapStateToProps should return correct prop value based on state', () => {
     expect(mapStateToProps({ image: { imageList: [1, 2] } })).toEqual({ imageList: [1, 2] });
+  });
+  it('mapDispatchToProps should correctly map the function dispatcher', () => {
+    const dispatch = jest.fn();
+    const result = mapDispatchToProps(dispatch);
+    expect(result.changePage).toBeDefined();
+
+    result.changePage();
+    expect(dispatch.mock.calls[0][0]).toBeDefined();
   });
 });

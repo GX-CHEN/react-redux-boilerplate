@@ -1,6 +1,5 @@
 import React from 'react';
 import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Divider, Icon, message } from 'antd';
 import PropTypes from 'prop-types';
@@ -68,13 +67,9 @@ export const mapStateToProps = state => {
   };
 };
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      changePage: (route, params) => push(route, params)
-    },
-    dispatch
-  );
+export const mapDispatchToProps = dispatch => ({
+  changePage: (route, params) => dispatch(push(route, params))
+});
 
 export default connect(
   mapStateToProps,
