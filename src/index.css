@@ -1,0 +1,44 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.view-image-container,
+.list-image-container {
+  min-width: 300px;
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+  height: 86%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.view-image-container img {
+  max-width: 100%;
+}
+
+.image-list {
+  margin-bottom: 100px;
+}
+
+.full-with-btn {
+  width: 100%;
+}
+
+.ant-list-item-content {
+  color: #1890ff;
+}
+
+.ant-list-item-content:hover {
+  text-decoration: underline;
+}
