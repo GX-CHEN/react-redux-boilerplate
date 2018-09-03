@@ -7,6 +7,5 @@
     "jest": true
   },
   "plugins": ["react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "rules": {}
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
 }

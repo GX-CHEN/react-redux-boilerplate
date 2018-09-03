@@ -44,8 +44,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest --coverage",
-    "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "eject": "react-scripts eject"
   },
   "jest": {
     "testEnvironment": "node",
@@ -59,12 +58,6 @@
       "/node_modules/",
       "model/apiService.js",
       "rootReducer.js"
-    ]
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
     ]
   }
 }
