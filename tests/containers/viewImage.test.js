@@ -21,6 +21,7 @@ describe('Test function inside viewImage component', () => {
       imageUrl={'testUrl'}
     />
   );
+
   it('When navigateToList() is invoked, changePage() from props should be called once', () => {
     viewImage.instance().navigateToList();
     expect(changePage).toBeCalled();

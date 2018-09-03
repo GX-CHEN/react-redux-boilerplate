@@ -33,6 +33,7 @@ describe('Test function inside listImage component', () => {
       searchImage={searchImage}
     />
   );
+  
   it('When navigateToImageView() is invoked, changePage() from props should be called once', () => {
     listImage.instance().navigateToImageView();
     expect(changePage).toBeCalled();

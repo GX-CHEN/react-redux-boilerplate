@@ -8,4 +8,4 @@ describe('Test for high level App component', () => {
   it('App component should contain Route', () => {
     expect(app.find(Route)).toHaveLength(2);
   });
-})
+});

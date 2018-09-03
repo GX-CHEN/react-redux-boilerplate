@@ -7,7 +7,7 @@ import ViewImage from '../pages/viewImage';
  * mapping the route (sub path of URL) to the handling component
  * With the help of react-router, we can easily manage different page separately
  * However notice it doesn't change the fact it's still SPA (Single Page Application), because only one js bundle is created
- * @returns {Component} return the App componemt which handles routing
+ * @returns {Component} return the App component which handles routing
  */
 const App = () => (
   <div>

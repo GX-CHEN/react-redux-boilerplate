@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.giphy.com/v1/gifs';
 const API_KEY = 'f30RsH8N2igFVgyuE3KBH3t0RjzzkWne';
 
 /**
- * search trending do not require any passed in argument, it simply get the lastest trending images from giphy
+ * search trending do not require any passed in argument, it simply get the latest trending images from giphy
  * @returns {Array} - An array of giphy gif images json data will be returned from the API call
  */
 export function getTrendingImageService() {

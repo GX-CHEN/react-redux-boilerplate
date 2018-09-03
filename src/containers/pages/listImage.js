@@ -17,7 +17,7 @@ export class ListImage extends React.Component {
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
    * @param {Function} props.changePage - changePage is a function which can navigation from a page to another
-   * @param {Function} props.getTrendingImage  - getTrendingImage will return a list of image which is trending on giphy
+   * @param {Function} props.getTrendingImage  - getTrendingImage will return a list of image which is trending on giphy.com
    */
   constructor(props) {
     super(props);
@@ -31,7 +31,7 @@ export class ListImage extends React.Component {
   }
 
   /**
-   * dispatch the getTrendingImage action and return a list of image
+   * dispatch the getTrendingImage action and return a list of images
    */
   listTrendingImage = () => {
     this.props.getTrendingImage();
@@ -45,7 +45,7 @@ export class ListImage extends React.Component {
   };
 
   /**
-   * getDerivedStateFromProps will be called every time before render (it is new React lifecyle function to replace the old componentWillReceiveProps)
+   * getDerivedStateFromProps will be called every time before render (it is new React life-cycle function to replace the old componentWillReceiveProps)
    * So in order to avoid too frequent render, we need to compare the data then decide do we need to re-render
    * @param {Object} nextProps
    * @param {Object} prevState

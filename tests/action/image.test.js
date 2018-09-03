@@ -10,7 +10,7 @@ import { getTrendingImage, searchImage } from '../../src/action/image';
 import { GET_TRENDING_IMAGE_FULFILLED, SEARCH_IMAGE_FULFILLED } from '../../src/const/image';
 
 let middleware = [thunk, promiseMiddleware()];
-let glob = typeof window !== "undefined" ? window : global;
+let glob = typeof window !== 'undefined' ? window : global;
 const devToolsExtension = glob.devToolsExtension;
 
 let store;
@@ -19,14 +19,20 @@ let mock = new MockAdapter(axios);
 const initialArrange = () => {
   jest.resetAllMocks();
   mock.reset();
-  store = createStore(applicationReducer, compose(applyMiddleware(...middleware), devToolsExtension ? devToolsExtension() : f => f));
+  store = createStore(
+    applicationReducer,
+    compose(
+      applyMiddleware(...middleware),
+      devToolsExtension ? devToolsExtension() : f => f
+    )
+  );
 };
 
 const mockedList = {
-  imageList: [],
+  imageList: []
 };
 
-describe('action tests for images', () => {
+describe('giphy image action tests', () => {
   beforeEach(initialArrange);
 
   it('test getTrending FULFILLED action with middleware', async () => {
@@ -42,5 +48,4 @@ describe('action tests for images', () => {
     expect(result.action.type).toEqual(SEARCH_IMAGE_FULFILLED);
     expect(result.action.payload).toEqual(mockedList);
   });
-
 });
