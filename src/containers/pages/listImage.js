@@ -1,10 +1,10 @@
 import React from 'react';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
-import { getTrendingImage, searchImage } from '../../action/image';
 import { Button, List, Divider, Input, message } from 'antd';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
+import { getTrendingImage, searchImage } from '../../action/image';
 import { generateTitleFromGiphySlug } from '../../model/utils';
 
 /**
@@ -13,7 +13,7 @@ import { generateTitleFromGiphySlug } from '../../model/utils';
  * When clicking on element of the list, user will be navigate to viewPage to see the gif image
  */
 export class ListImage extends React.Component {
-  /**@constructor
+  /** @constructor
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
    * @param {Function} props.changePage - changePage is a function which can navigation from a page to another
@@ -22,7 +22,7 @@ export class ListImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageList: []
+      imageList: [],
     };
   }
 
@@ -34,18 +34,21 @@ export class ListImage extends React.Component {
    * dispatch the getTrendingImage action and return a list of images
    */
   listTrendingImage = () => {
-    this.props.getTrendingImage();
+    const { getTrendingImage } = this.props;
+    getTrendingImage();
   };
 
   /**
    * dispatch the searchImage action, which will search the images by keyword
    */
   searchImage = event => {
-    this.props.searchImage(event.target.value);
+    const { searchImage } = this.props;
+    searchImage(event.target.value);
   };
 
   /**
-   * getDerivedStateFromProps will be called every time before render (it is new React life-cycle function to replace the old componentWillReceiveProps)
+   * getDerivedStateFromProps will be called every time before render
+   * (it is new React life-cycle function to replace the old componentWillReceiveProps)
    * So in order to avoid too frequent render, we need to compare the data then decide do we need to re-render
    * @param {Object} nextProps
    * @param {Object} prevState
@@ -56,11 +59,10 @@ export class ListImage extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (isEqual(nextProps.imageList, prevState.imageList)) {
       return null;
-    } else {
-      return {
-        imageList: nextProps.imageList
-      };
     }
+    return {
+      imageList: nextProps.imageList,
+    };
   }
 
   /**
@@ -94,7 +96,7 @@ export class ListImage extends React.Component {
                 onClick={this.navigateToImageView.bind(
                   this,
                   item.images.downsized_medium.url,
-                  item.title || generateTitleFromGiphySlug(item.slug)
+                  item.title || generateTitleFromGiphySlug(item.slug),
                 )}>
                 {item.title || generateTitleFromGiphySlug(item.slug)}
               </List.Item>
@@ -110,22 +112,20 @@ ListImage.propTypes = {
   location: PropTypes.object,
   changePage: PropTypes.func,
   getTrendingImage: PropTypes.func,
-  searchImage: PropTypes.func
+  searchImage: PropTypes.func,
 };
 
-export const mapStateToProps = state => {
-  return {
-    imageList: state.image.imageList
-  };
-};
+export const mapStateToProps = state => ({
+  imageList: state.image.imageList,
+});
 
 export const mapDispatchToProps = dispatch => ({
   getTrendingImage: () => dispatch(getTrendingImage()),
   searchImage: keyword => dispatch(searchImage(keyword)),
-  changePage: (route, params) => dispatch(push(route, params))
+  changePage: (route, params) => dispatch(push(route, params)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ListImage);

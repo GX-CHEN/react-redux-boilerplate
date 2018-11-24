@@ -9,12 +9,12 @@ import applicationReducer from '../../src/rootReducer';
 import { getTrendingImage, searchImage } from '../../src/action/image';
 import { GET_TRENDING_IMAGE_FULFILLED, SEARCH_IMAGE_FULFILLED } from '../../src/const/image';
 
-let middleware = [thunk, promiseMiddleware()];
-let glob = typeof window !== 'undefined' ? window : global;
-const devToolsExtension = glob.devToolsExtension;
+const middleware = [thunk, promiseMiddleware()];
+const glob = typeof window !== 'undefined' ? window : global;
+const { devToolsExtension } = glob;
 
 let store;
-let mock = new MockAdapter(axios);
+const mock = new MockAdapter(axios);
 
 const initialArrange = () => {
   jest.resetAllMocks();
@@ -23,13 +23,13 @@ const initialArrange = () => {
     applicationReducer,
     compose(
       applyMiddleware(...middleware),
-      devToolsExtension ? devToolsExtension() : f => f
-    )
+      devToolsExtension ? devToolsExtension() : f => f,
+    ),
   );
 };
 
 const mockedList = {
-  imageList: []
+  imageList: [],
 };
 
 describe('giphy image action tests', () => {

@@ -26,5 +26,5 @@ render(
       </div>
     </ConnectedRouter>
   </Provider>,
-  target
+  target,
 );

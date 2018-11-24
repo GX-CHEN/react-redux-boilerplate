@@ -18,8 +18,8 @@ describe('Test function inside viewImage component', () => {
     <ViewImage
       location={{ state: { imageUrl: 'testImageUrl', imageTitle: 'testImageTitle' } }}
       changePage={changePage}
-      imageUrl={'testUrl'}
-    />
+      imageUrl="testUrl"
+    />,
   );
 
   it('When navigateToList() is invoked, changePage() from props should be called once', () => {

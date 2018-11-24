@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
  * There's also a 'back to list' button to go back to list view
  */
 export class ViewImage extends React.Component {
-  /**@constructor
+  /**
+   * @constructor
    * @param {Object} props
    * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
    * @param {string} props.location.state.imageUrl - image URL of selected gif image from the list image page
@@ -21,7 +22,7 @@ export class ViewImage extends React.Component {
     super(props);
     this.state = {
       imageUrl: null,
-      imageTitle: null
+      imageTitle: null,
     };
   }
 
@@ -44,7 +45,8 @@ export class ViewImage extends React.Component {
     return (
       <div className="view-image-container">
         <Button onClick={this.navigateToList} type="primary">
-          <Icon type="left" /> Back To List
+          <Icon type="left" />
+          Back To List
         </Button>
         <Divider dashed />
         <div style={{ textAlign: 'center' }}>
@@ -58,20 +60,18 @@ export class ViewImage extends React.Component {
 
 ViewImage.propTypes = {
   location: PropTypes.object,
-  changePage: PropTypes.func
+  changePage: PropTypes.func,
 };
 
-export const mapStateToProps = state => {
-  return {
-    imageList: state.image.imageList
-  };
-};
+export const mapStateToProps = state => ({
+  imageList: state.image.imageList,
+});
 
 export const mapDispatchToProps = dispatch => ({
-  changePage: (route, params) => dispatch(push(route, params))
+  changePage: (route, params) => dispatch(push(route, params)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ViewImage);

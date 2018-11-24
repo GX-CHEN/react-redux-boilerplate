@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from '../../src/containers/app';
 import { Route } from 'react-router-dom';
+import App from '../../src/containers/app';
 
 describe('Test for high level App component', () => {
   const app = shallow(<App />);

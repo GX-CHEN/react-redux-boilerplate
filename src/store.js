@@ -12,7 +12,7 @@ const enhancers = [];
 /**
  * middleware will empower the app to do complex things with less code
  * For example: async handling, routing, cookie handling etc,
- * In the store.js, we specify all the middleware in the store creation process 
+ * In the store.js, we specify all the middleware in the store creation process
  */
 const middleware = [thunk, routerMiddleware(history), promiseMiddleware()];
 
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const composedEnhancers = compose(
   applyMiddleware(...middleware),
-  ...enhancers
+  ...enhancers,
 );
 
 export default createStore(rootReducer, initialState, composedEnhancers);

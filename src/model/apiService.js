@@ -13,15 +13,15 @@ const API_KEY = 'f30RsH8N2igFVgyuE3KBH3t0RjzzkWne';
  * @returns {Array} - An array of giphy gif images json data will be returned from the API call
  */
 export function getTrendingImageService() {
-  return axios.get(`${BASE_URL}/trending?api_key=${API_KEY}&limit=10`).then(function(res) {
-    if (res.status !== 200) throw new Error('bad response from server' + res.status);
+  return axios.get(`${BASE_URL}/trending?api_key=${API_KEY}&limit=10`).then(res => {
+    if (res.status !== 200) throw new Error(`bad response from server ${res.status}`);
     return res.data;
   });
 }
 
 export function searchImageService(keyword) {
-  return axios.get(`${BASE_URL}/search?api_key=${API_KEY}&q=${keyword}&limit=10`).then(function(res) {
-    if (res.status !== 200) throw new Error('bad response from server' + res.status);
+  return axios.get(`${BASE_URL}/search?api_key=${API_KEY}&q=${keyword}&limit=10`).then(res => {
+    if (res.status !== 200) throw new Error(`bad response from server ${res.status}`);
     return res.data;
   });
 }

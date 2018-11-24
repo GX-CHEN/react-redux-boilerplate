@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         imageList: payload.data,
-        nextPage: 'viewImage'
+        nextPage: 'viewImage',
       };
     }
     default:

@@ -3,33 +3,31 @@ import { GET_TRENDING_IMAGE_FULFILLED, SEARCH_IMAGE_FULFILLED } from '../../src/
 
 describe('giphy image reducer test', () => {
   it('reducers if action "GET_TRENDING_IMAGE_FULFILLED"', () => {
-    let state;
-    state = reducers(
+    const state = reducers(
       {
-        startupData: {}
+        startupData: {},
       },
       {
         type: GET_TRENDING_IMAGE_FULFILLED,
         payload: {
-          data: []
-        }
-      }
+          data: [],
+        },
+      },
     );
     expect(state).toEqual({ imageList: [], nextPage: 'viewImage', startupData: {} });
   });
 
   it('reducers if action "SEARCH_IMAGE_FULFILLED"', () => {
-    let state;
-    state = reducers(
+    const state = reducers(
       {
-        startupData: {}
+        startupData: {},
       },
       {
         type: SEARCH_IMAGE_FULFILLED,
         payload: {
-          data: []
-        }
-      }
+          data: [],
+        },
+      },
     );
     expect(state).toEqual({ imageList: [], nextPage: 'viewImage', startupData: {} });
   });
