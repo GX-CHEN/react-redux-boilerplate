@@ -4,8 +4,9 @@ import { Button, Divider, Icon } from 'antd';
 import { ViewImage, mapStateToProps, mapDispatchToProps } from '../../src/containers/pages/viewImage';
 
 describe('Test for high level App component', () => {
+  const changePage = jest.fn();
   it('ViewImage component should contain UI elements from Ant Design', () => {
-    const viewImage = shallow(<ViewImage />);
+    const viewImage = shallow(<ViewImage location={{}} changePage={changePage} />);
     expect(viewImage.find(Button)).toHaveLength(1);
     expect(viewImage.find(Divider)).toHaveLength(1);
     expect(viewImage.find(Icon)).toHaveLength(1);

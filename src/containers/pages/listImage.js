@@ -15,7 +15,6 @@ import { generateTitleFromGiphySlug } from '../../model/utils';
 export class ListImage extends React.Component {
   /** @constructor
    * @param {Object} props
-   * @param {Object} props.location - location is from redux-react-router, which maintains current page and variables send to the page
    * @param {Function} props.changePage - changePage is a function which can navigation from a page to another
    * @param {Function} props.getTrendingImage  - getTrendingImage will return a list of image which is trending on giphy.com
    */
@@ -109,10 +108,9 @@ export class ListImage extends React.Component {
 }
 
 ListImage.propTypes = {
-  location: PropTypes.object,
-  changePage: PropTypes.func,
-  dispatchGetTrendingImage: PropTypes.func,
-  dispatchSearchImage: PropTypes.func,
+  changePage: PropTypes.func.isRequired,
+  dispatchGetTrendingImage: PropTypes.func.isRequired,
+  dispatchSearchImage: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({

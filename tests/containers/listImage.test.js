@@ -4,15 +4,28 @@ import { Button, Divider, Input, List } from 'antd';
 import { ListImage, mapStateToProps, mapDispatchToProps } from '../../src/containers/pages/listImage';
 
 describe('Test UI elements in listImage component', () => {
+  const changePage = jest.fn();
+  const dispatchGetTrendingImage = jest.fn();
+  const dispatchSearchImage = jest.fn();
+
   it('ListImage component should contain UI elements from Ant Design, but no List element when no imageList data', () => {
-    const listImage = shallow(<ListImage />);
+    const listImage = shallow(
+      <ListImage changePage={changePage} dispatchGetTrendingImage={dispatchGetTrendingImage} dispatchSearchImage={dispatchSearchImage} />,
+    );
     expect(listImage.find(Button)).toHaveLength(1);
     expect(listImage.find(Divider)).toHaveLength(3);
     expect(listImage.find(Input)).toHaveLength(1);
     expect(listImage.find(List)).toHaveLength(0);
   });
   it('ListImage component should contain UI elements from Ant Design, and has List element when having imageList data', () => {
-    const listImage = shallow(<ListImage imageList={[1, 2]} />);
+    const listImage = shallow(
+      <ListImage
+        imageList={[1, 2]}
+        changePage={changePage}
+        dispatchGetTrendingImage={dispatchGetTrendingImage}
+        dispatchSearchImage={dispatchSearchImage}
+      />,
+    );
     expect(listImage.find(Button)).toHaveLength(1);
     expect(listImage.find(Divider)).toHaveLength(3);
     expect(listImage.find(Input)).toHaveLength(1);

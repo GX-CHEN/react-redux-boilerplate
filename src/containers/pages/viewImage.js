@@ -59,8 +59,8 @@ export class ViewImage extends React.Component {
 }
 
 ViewImage.propTypes = {
-  location: PropTypes.object,
-  changePage: PropTypes.func,
+  location: PropTypes.object.isRequired,
+  changePage: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = state => ({
