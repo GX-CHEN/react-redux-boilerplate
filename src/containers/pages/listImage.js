@@ -31,22 +31,6 @@ export class ListImage extends React.Component {
   }
 
   /**
-   * dispatch the getTrendingImage action and return a list of images
-   */
-  listTrendingImage = () => {
-    const { getTrendingImage } = this.props;
-    getTrendingImage();
-  };
-
-  /**
-   * dispatch the searchImage action, which will search the images by keyword
-   */
-  searchImage = event => {
-    const { searchImage } = this.props;
-    searchImage(event.target.value);
-  };
-
-  /**
    * getDerivedStateFromProps will be called every time before render
    * (it is new React life-cycle function to replace the old componentWillReceiveProps)
    * So in order to avoid too frequent render, we need to compare the data then decide do we need to re-render
@@ -66,6 +50,22 @@ export class ListImage extends React.Component {
   }
 
   /**
+   * dispatch the getTrendingImage action and return a list of images
+   */
+  listTrendingImage = () => {
+    const { dispatchGetTrendingImage } = this.props;
+    dispatchGetTrendingImage();
+  };
+
+  /**
+   * dispatch the searchImage action, which will search the images by keyword
+   */
+  listSearchImage = event => {
+    const { dispatchSearchImage } = this.props;
+    dispatchSearchImage(event.target.value);
+  };
+
+  /**
    * @param {string} imageUrl - url of image which pass to next page
    * @param {string} imageTitle - title of image which pass to next page
    */
@@ -83,7 +83,7 @@ export class ListImage extends React.Component {
           Click To Get Trending Giphys
         </Button>
         <Divider>or Search By Keyword</Divider>
-        <Input onInput={this.searchImage} placeholder="Giphy Keyword" />
+        <Input onInput={this.listSearchImage} placeholder="Giphy Keyword" />
         <Divider dashed />
         {imageList && (
           <List
@@ -93,11 +93,11 @@ export class ListImage extends React.Component {
             dataSource={imageList}
             renderItem={item => (
               <List.Item
-                onClick={this.navigateToImageView.bind(
-                  this,
-                  item.images.downsized_medium.url,
-                  item.title || generateTitleFromGiphySlug(item.slug),
-                )}>
+                onClick={() => {
+                  const title = item.title || generateTitleFromGiphySlug(item.slug);
+                  this.navigateToImageView(item.images.downsized_medium.url, title);
+                }}
+              >
                 {item.title || generateTitleFromGiphySlug(item.slug)}
               </List.Item>
             )}
@@ -111,8 +111,8 @@ export class ListImage extends React.Component {
 ListImage.propTypes = {
   location: PropTypes.object,
   changePage: PropTypes.func,
-  getTrendingImage: PropTypes.func,
-  searchImage: PropTypes.func,
+  dispatchGetTrendingImage: PropTypes.func,
+  dispatchSearchImage: PropTypes.func,
 };
 
 export const mapStateToProps = state => ({
@@ -120,8 +120,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  getTrendingImage: () => dispatch(getTrendingImage()),
-  searchImage: keyword => dispatch(searchImage(keyword)),
+  dispatchGetTrendingImage: () => dispatch(getTrendingImage()),
+  dispatchSearchImage: keyword => dispatch(searchImage(keyword)),
   changePage: (route, params) => dispatch(push(route, params)),
 });
 

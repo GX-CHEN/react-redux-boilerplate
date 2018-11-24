@@ -22,15 +22,15 @@ describe('Test UI elements in listImage component', () => {
 
 describe('Test function inside listImage component', () => {
   const changePage = jest.fn();
-  const getTrendingImage = jest.fn();
-  const searchImage = jest.fn();
+  const dispatchGetTrendingImage = jest.fn();
+  const dispatchSearchImage = jest.fn();
   const listImage = shallow(
     <ListImage
       imageList={[]}
       location={{}}
       changePage={changePage}
-      getTrendingImage={getTrendingImage}
-      searchImage={searchImage}
+      dispatchGetTrendingImage={dispatchGetTrendingImage}
+      dispatchSearchImage={dispatchSearchImage}
     />,
   );
 
@@ -40,11 +40,11 @@ describe('Test function inside listImage component', () => {
   });
   it('When listTrendingImage() is invoked, changePage() from props should be called once', () => {
     listImage.instance().listTrendingImage();
-    expect(getTrendingImage).toBeCalled();
+    expect(dispatchGetTrendingImage).toBeCalled();
   });
   it('When searchImage() is invoked, changePage() from props should be called once', () => {
-    listImage.instance().searchImage({ target: { value: 'hello' } });
-    expect(searchImage).toBeCalled();
+    listImage.instance().listSearchImage({ target: { value: 'hello' } });
+    expect(dispatchSearchImage).toBeCalled();
   });
   it('mapStateToProps should return correct prop value based on state', () => {
     expect(mapStateToProps({ image: { imageList: [1, 2] } })).toEqual({ imageList: [1, 2] });
@@ -52,12 +52,12 @@ describe('Test function inside listImage component', () => {
   it('mapDispatchToProps should correctly map the function dispatcher', () => {
     const dispatch = jest.fn();
     const result = mapDispatchToProps(dispatch);
-    expect(result.getTrendingImage).toBeDefined();
-    expect(result.searchImage).toBeDefined();
+    expect(result.dispatchGetTrendingImage).toBeDefined();
+    expect(result.dispatchSearchImage).toBeDefined();
     expect(result.changePage).toBeDefined();
 
-    result.getTrendingImage();
-    result.searchImage();
+    result.dispatchGetTrendingImage();
+    result.dispatchSearchImage();
     result.changePage();
     expect(dispatch.mock.calls[0][0]).toBeDefined();
     expect(dispatch.mock.calls[1][0]).toBeDefined();
